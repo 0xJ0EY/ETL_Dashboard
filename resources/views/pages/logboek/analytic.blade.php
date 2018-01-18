@@ -1,7 +1,7 @@
 @extends('/includes/template')
 
 @section('content')
-    <h1>Logboek analyse</h1>
+    <h1>Logs analyse</h1>
 
     <div class="container-fluid">
         {{-- First row of both the top days watched and devices --}}
@@ -10,13 +10,25 @@
             {{-- Table with users --}}
             <div class="col-md-6">
 
-                <h3>Studenten</h3>
+                <h3>Students</h3>
+
+                <form class="form-horizontal search-container">
+                    <div class="search col-sm-8">
+                        <div class="input-group">
+                            <input name="query" type="text" class="form-control" placeholder="Search">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="submit">Search</button>
+                           </span>
+                        </div>
+                    </div>
+                </form>
+
 
                 <table class="table table-striped table-hover">
                     <tr>
-                        <th>Student nummer</th>
-                        <th>Gemiddelde gekeken tijd</th>
-                        <th>Gemiddelde beoordeling</th>
+                        <th>Student number</th>
+                        <th>Avg time watched</th>
+                        <th>Avg rating</th>
                     </tr>
 
                     @foreach ($students as $student)
@@ -34,7 +46,7 @@
 
             {{-- Aantal devices --}}
             <div class="col-md-6">
-                <h3>Aantal devices</h3>
+                <h3>Avg rating / Minutes watched</h3>
 
                 <div id="scatter"></div>
             </div>

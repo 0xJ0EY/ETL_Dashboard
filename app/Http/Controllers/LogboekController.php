@@ -6,25 +6,22 @@ use Illuminate\Http\Request;
 
 class LogboekController extends Controller implements IDar
 {
-
-    public function data() {
-        $topWatched     = \App\Log::getTopWatchedGChart(5);
-        $devices        = \App\Log::getDevicesGChart();
-        $kpiRating      = \App\Log::getKpiRating();
-
-        return view('pages.logboek.data', [
-            'topWatched' => $topWatched,
-            'kpiRating' => $kpiRating,
-            'devices'   => $devices
-        ]);
-    }
-
-    public function dataDetails($id) {
-
-    }
-
     public function analytic() {
-        $students       = \App\Log::getAllDistinctStudents()->paginate(15);
+        if ($query = \Input::get('query')) {
+            $cols = array_keys(\App\Log::first()->toArray());
+            $cols = implode(', ', $cols);
+
+            $students = \App\Log::getAllDistinctStudents()
+                ->whereRaw("LOWER(CONCAT_WS('|', {$cols})) LIKE ?", ['%'.$query.'%'])
+                ->orderBy('student_number', 'ASC')
+                ->paginate(15);
+
+            $students->appends(\Input::except('page'));
+
+        } else {
+            $students = \App\Log::getAllDistinctStudents()->paginate(15);
+        }
+
         $scatter        = \App\Log::getAllDistinctStudentsGChart();
 
         return view('pages.logboek.analytic', [
@@ -53,16 +50,24 @@ class LogboekController extends Controller implements IDar
     }
 
     public function report() {
-        $logs           = \App\Log::paginate(30);
+
+        if ($query = \Input::get('query')) {
+            $cols = array_keys(\App\Log::first()->toArray());
+            $cols = implode(', ', $cols);
+
+            $logs = \App\Log::select('*')
+                ->whereRaw("LOWER(CONCAT_WS('|', {$cols})) LIKE ?", ['%'.$query.'%'])
+                ->paginate(30);
+
+            $logs->appends(\Input::except('page'));
+
+        } else {
+            $logs = \App\Log::paginate(30);
+        }
 
         return view('pages.logboek.report', [
             'logs' => $logs
         ]);
     }
-
-    public function reportDetails($id) {
-
-    }
-
 }
 

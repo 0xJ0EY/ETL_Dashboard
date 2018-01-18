@@ -15,20 +15,22 @@
 
 <div class="sidebar">
     <div class="logo">
-        ETL
+        <a href="/">
+            <span>ETL DataView</span>
+        </a>
     </div>
 
     <nav class="nav">
         <ul>
-            <li>
+            <li class="{{ Request::segment(1) == "" || Request::segment(1) == "logboek" ? "selected" : null }}">
                 <a href="/logboek/">
-                    <span>Kijkcijfers</span>
+                    <span>Logs</span>
                 </a>
             </li>
 
-            <li>
+            <li class="{{ Request::segment(1) == "movies" ? "selected" : null }}">
                 <a href="/movies/">
-                    <span>Films</span>
+                    <span>Movies</span>
                 </a>
             </li>
         </ul>
@@ -38,19 +40,15 @@
 <div class="header">
     <ul>
         <li>
-            <a href="/{{Request::segment(1) ?: "logboek"}}/data/">
-                <span>Data</span>
-            </a>
-        </li>
-
-        <li>
-            <a href="/{{Request::segment(1) ?: "logboek"}}/analytic/">
+            <a href="/{{Request::segment(1) ?: "logboek"}}/analytic/"
+               class="{{ Request::segment(2) == "" || Request::segment(2) == "analytic" ? "selected" : null }}">
                 <span>Analyse</span>
             </a>
         </li>
 
         <li>
-            <a href="/{{Request::segment(1)?: "logboek"}}/report/">
+            <a href="/{{Request::segment(1)?: "logboek"}}/report/"
+               class="{{ Request::segment(2) == "report" ? "selected" : null }}">
                 <span>Rapportage</span>
             </a>
         </li>

@@ -1,7 +1,7 @@
 @extends('/includes/template')
 
 @section('content')
-    <h1>Logboek analyse</h1>
+    <h1>Logs analyse</h1>
 
     <div class="container-fluid">
         {{-- First row of both the top days watched and devices --}}
@@ -10,24 +10,22 @@
             <div class="col-md-6">
                 <h3>Logs</h3>
 
-
-
-                <table class="table">
+                <table class="table table-striped table-hover">
 
                     <tr>
                         <th>#</th>
-                        <th>Student nummer</th>
-                        <th>Apparaat</th>
-                        <th>Kanaal</th>
+                        <th>Student number</th>
+                        <th>Device</th>
+                        <th>Channel</th>
                         <th>Video</th>
-                        <th>Tijd gekeken</th>
-                        <th>Beoordeling</th>
+                        <th>Time watched</th>
+                        <th>Rating</th>
                     </tr>
 
                     @foreach ($logs as $log)
                         <tr class="{{ $log->isComplete() ? "complete" : "danger"}}">
                             <td>{{ $log->id }}</td>
-                            <td><a href="/logboek/analytic/{{ $log->student_number }}">{{ $log->student_number }}</a></td>
+                            <td>{{ $log->student_number }}</td>
                             <td>{{ $log->device }}</td>
                             <td>{{ $log->channel }}</td>
                             <td>{{ $log->video }}</td>
@@ -39,7 +37,6 @@
 
                 {{ $logs->render() }}
 
-
                 <div id="scatter"></div>
             </div>
 
@@ -47,7 +44,7 @@
             <div class="col-md-6">
                 <h3>Student</h3>
 
-                <table class="table">
+                <table class="table table-striped table-hover">
                     <tr>
                         <th>Student nummer</th>
                         <td>{{ $student->student_number }}</td>

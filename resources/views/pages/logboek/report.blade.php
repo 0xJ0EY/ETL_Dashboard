@@ -3,7 +3,7 @@
 
 @section('content')
 
-    <h1>Logboek rapportage</h1>
+    <h1>Logs report</h1>
 
     <div class="container-fluid">
         {{-- First row of both the top days watched and devices --}}
@@ -12,15 +12,28 @@
             {{-- Table with users --}}
             <div class="col-md-12">
 
+                <h3>Logs data</h3>
+
+                <form class="form-horizontal search-container">
+                    <div class="right search col-sm-4">
+                        <div class="input-group">
+                            <input name="query" type="text" class="form-control" placeholder="Search">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="submit">Search</button>
+                           </span>
+                        </div>
+                    </div>
+                </form>
+
                 <table class="table table-striped table-hover">
                     <tr>
                         <th>#</th>
-                        <th>Student nummer</th>
-                        <th>Apparaat</th>
-                        <th>Kanaal</th>
+                        <th>Student number</th>
+                        <th>Device</th>
+                        <th>Channel</th>
                         <th>Video</th>
-                        <th>Tijd gekeken</th>
-                        <th>Beoordeling</th>
+                        <th>Time watched</th>
+                        <th>Rating</th>
                     </tr>
 
                     @foreach ($logs as $log)

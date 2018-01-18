@@ -16,12 +16,8 @@
  */
 
 // Default binds
-Route::get('/', 'LogboekController@data');
-Route::get('/logboek/', 'LogboekController@data');
-Route::get('/logboek/data/', 'LogboekController@data');
-
-// Default bind
-Route::get('/logboek/', 'LogboekController@data');
+Route::get('/', 'LogboekController@analytic');
+Route::get('/logboek/', 'LogboekController@analytic');
 
 Route::get('/logboek/data/', 'LogboekController@data');
 Route::get('/logboek/data/{id}', 'LogboekController@dataDetails');
@@ -36,13 +32,10 @@ Route::get('/logboek/report/{id}', 'LogboekController@reportDetails');
  * Movies routes
  * */
 // Default bind
-Route::get('/movies/', 'MovieController@data');
-
-Route::get('/movies/data/', 'MovieController@data');
-Route::get('/movies/data/details/{id}', 'MovieController@dataDetails');
+Route::get('/movies/', 'MovieController@analytic');
 
 Route::get('/movies/analytic/', 'MovieController@analytic');
-Route::get('/movies/data/analytic/{id}', 'MovieController@analyticDetails');
+Route::get('/movies/analytic/{id}', 'MovieController@analyticDetails');
 
 Route::get('/movies/report/', 'MovieController@report');
-Route::get('/movies/data/report/{id}', 'MovieController@reportDetails');
+Route::get('/movies/report/{id}', 'MovieController@reportDetails');
