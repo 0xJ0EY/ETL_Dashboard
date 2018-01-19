@@ -12,6 +12,17 @@
 
                 <h3>Movie data</h3>
 
+                <form class="form-horizontal search-container">
+                    <div class="right search col-sm-4">
+                        <div class="input-group">
+                            <input name="query" type="text" class="form-control" placeholder="Search">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="submit">Search</button>
+                           </span>
+                        </div>
+                    </div>
+                </form>
+
                 <table class="table table-striped table-hover">
                     <tr>
                         <th>Title</th>
