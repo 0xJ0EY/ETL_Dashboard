@@ -12,17 +12,6 @@
 
                 <h3>Movie data</h3>
 
-                <form class="form-horizontal search-container">
-                    <div class="right search col-sm-4">
-                        <div class="input-group">
-                            <input name="query" type="text" class="form-control" placeholder="Search">
-                            <span class="input-group-btn">
-                                <button class="btn btn-default" type="submit">Search</button>
-                           </span>
-                        </div>
-                    </div>
-                </form>
-
                 <table class="table table-striped table-hover">
                     <tr>
                         <th>Title</th>
@@ -51,7 +40,9 @@
                                 return '<a href="/movies/genre/'.urlencode($v['genre']).'">' . $v['genre'] . '</a>'; },
                                 $movie->getCategories()))
                                 !!}</td>
-                            <td>{!! implode(', ', array_map(function($v) { return $v['keyword']; }, $movie->getKeywords())) !!}</td>
+                            <td>{!! implode(', ', array_map(function($v) {
+                                return '<a href="/movies/keyword/'.urlencode($v['keyword']).'">' . $v['keyword'] . '</a>';
+                                 }, $movie->getKeywords())) !!}</td>
                         </tr>
                     @endforeach
                 </table>

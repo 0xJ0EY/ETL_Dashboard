@@ -75,4 +75,20 @@ class MovieController extends Controller implements IDar
             'movies'    => $movies->paginate(15)
         ]);
     }
+
+    public function keyword($keyword) {
+        $keyword = urldecode($keyword);
+
+        $movies = \App\Movie::whereIn('id', function($movies) use ($keyword) {
+            $movies
+                ->select('movie_id')
+                ->from('movie_keywords')
+                ->where('keyword', '=', $keyword);
+        })->orderBy('movie_title');
+
+        return view('pages.movie.keyword', [
+            'keyword'     => ucfirst($keyword),
+            'movies'    => $movies->paginate(15)
+        ]);
+    }
 }

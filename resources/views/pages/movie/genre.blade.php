@@ -51,7 +51,9 @@
                                 return '<a href="/movies/genre/'.urlencode($v['genre']).'">' . $v['genre'] . '</a>'; },
                                 $movie->getCategories()))
                                 !!}</td>
-                            <td>{!! implode(', ', array_map(function($v) { return $v['keyword']; }, $movie->getKeywords())) !!}</td>
+                            <td>{!! implode(', ', array_map(function($v) {
+                                return '<a href="/movies/keyword/'.urlencode($v['keyword']).'">' . $v['keyword'] . '</a>';
+                                }, $movie->getKeywords())) !!}</td>
                         </tr>
                     @endforeach
                 </table>
