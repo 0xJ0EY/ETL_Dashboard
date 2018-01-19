@@ -10,7 +10,7 @@
         <div class="row">
             <div class="col-md-12">
 
-                <h3>Movie data</h3>
+                <h3>Movie data : {{ $genre }}</h3>
 
                 <form class="form-horizontal search-container">
                     <div class="right search col-sm-4">

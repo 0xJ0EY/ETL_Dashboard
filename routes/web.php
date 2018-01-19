@@ -37,5 +37,8 @@ Route::get('/movies/', 'MovieController@analytic');
 Route::get('/movies/analytic/', 'MovieController@analytic');
 Route::get('/movies/analytic/{id}', 'MovieController@analyticDetails');
 
+Route::get('/movies/genre/{genre}', 'MovieController@genre');
+Route::get('/movies/keyword/{genre}', 'MovieController@reportDetails');
+
 Route::get('/movies/report/', 'MovieController@report');
 Route::get('/movies/report/{id}', 'MovieController@reportDetails');

@@ -59,4 +59,20 @@ class MovieController extends Controller implements IDar
             'movies' => $movies
         ]);
     }
+
+    public function genre($genre) {
+        $genre = urldecode($genre);
+
+        $movies = \App\Movie::whereIn('id', function($movies) use ($genre) {
+            $movies
+                ->select('movie_id')
+                ->from('movie_genres')
+                ->where('genre', '=', $genre);
+        })->orderBy('movie_title');
+
+        return view('pages.movie.genre', [
+            'genre'     => ucfirst($genre),
+            'movies'    => $movies->paginate(15)
+        ]);
+    }
 }
