@@ -65,6 +65,7 @@ class Log extends Model
         return self::selectRaw("
                 DISTINCT(student_number) student_number,
                 SEC_TO_TIME(AVG(TIME_TO_SEC(time_watched))) avg_time_watched,
+                SEC_TO_TIME(SUM(TIME_TO_SEC(time_watched))) total_time_watched,
                 AVG(rating) avg_rating")
             ->groupBy('student_number')
             ->orderBy('student_number')

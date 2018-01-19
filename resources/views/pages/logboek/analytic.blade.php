@@ -27,6 +27,7 @@
                 <table class="table table-striped table-hover">
                     <tr>
                         <th>Student number</th>
+                        <th>Total time watched</th>
                         <th>Avg time watched</th>
                         <th>Avg rating</th>
                     </tr>
@@ -34,6 +35,7 @@
                     @foreach ($students as $student)
                         <tr>
                             <td><a href="/logboek/analytic/{{ $student->student_number }}">{{ $student->student_number }}</a></td>
+                            <td>{{ $student->total_time_watched }}</td>
                             <td>{{ $student->avg_time_watched }}</td>
                             <td>{{ number_format($student->avg_rating, 2, '.', ',') }}</td>
                         </tr>

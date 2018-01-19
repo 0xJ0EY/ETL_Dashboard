@@ -46,17 +46,22 @@
 
                 <table class="table table-striped table-hover">
                     <tr>
-                        <th>Student nummer</th>
+                        <th>Student number</th>
                         <td>{{ $student->student_number }}</td>
                     </tr>
 
                     <tr>
-                        <th>Gemiddelde gekeken tijd</th>
+                        <th>Total time watched</th>
+                        <td>{{ $student->total_time_watched }}</td>
+                    </tr>
+
+                    <tr>
+                        <th>Avg time watched</th>
                         <td>{{ $student->avg_time_watched }}</td>
                     </tr>
 
                     <tr>
-                        <th>Gemiddelde beoordeling</th>
+                        <th>Avg rating</th>
                         <td>{{ $student->avg_rating }}</td>
                     </tr>
                 </table>
